@@ -22,7 +22,7 @@ class ViewController : UIViewController,UITableViewDelegate,UITableViewDataSourc
         
         dataSource += ["自适应行高Cell"]
         dataSource += ["MVVM是Model-View-ViewModel的简写，是由MVP（Model-View-Presenter）模式与WPF结合的应用方式时发展演变过来的一种新型架构框架。Model 用来获取数据并建立实体模型和基本的业务逻辑。提供数据获取接口供ViewModel调用，经数据转换和操作并最终映射绑定到View层某个UI元素的属性上View 用来创建显示的界面，不做任何业务逻辑，不处理操作数据。ViewModel 将View和Model联系起来，处理视图逻辑，操作数据，不做任何UI相关的事情。绑定数据到到相应的控件上，数据变化时自动更新UI。MVVM是Model-View-ViewModel的简写，是由MVP（Model-View-Presenter）模式与WPF结合的应用方式时发展演变过来的一种新型架构框架。Model 用来获取数据并建立实体模型和基本的业务逻辑。提供数据获取接口供ViewModel调用，经数据转换和操作并最终映射绑定到View层某个UI元素的属性上View 用来创建显示的界面，不做任何业务逻辑，不处理操作数据。ViewModel 将View和Model联系起来，处理视图逻辑，操作数据，不做任何UI相关的事情。绑定数据到到相应的控件上，数据变化时自动更新UI。"]
-        
+        //
         dataSource += ["自适应行高Cell"]
         dataSource += ["MVVM是Model-View-ViewModel的简写，是由MVP（Model-View-Presenter）模式与WPF结合的应用方式时发展演变过来的一种新型架构框架。Model 用来获取数据并建立实体模型和基本的业务逻辑。提供数据获取接口供ViewModel调用，经数据转换和操作并最终映射绑定到View层某个UI元素的属性上View 用来创建显示的界面，不做任何业务逻辑，不处理操作数据。ViewModel 将View和Model联系起来，处理视图逻辑，操作数据，不做任何UI相关的事情。绑定数据到到相应的控件上，数据变化时自动更新UI。MVVM是Model-View-ViewModel的简写，是由MVP（Model-View-Presenter）模式与WPF结合的应用方式时发展演变过来的一种新型架构框架。Model 用来获取数据并建立实体模型和基本的业务逻辑。提供数据获取接口供ViewModel调用，经数据转换和操作并最终映射绑定到View层某个UI元素的属性上View 用来创建显示的界面，不做任何业务逻辑，不处理操作数据。ViewModel 将View和Model联系起来，处理视图逻辑，操作数据，不做任何UI相关的事情。绑定数据到到相应的控件上，数据变化时自动更新UI。MVVM是Model-View-ViewModel的简写，是由MVP（Model-View-Presenter）模式与WPF结合的应用方式时发展演变过来的一种新型架构框架。Model 用来获取数据并建立实体模型和基本的业务逻辑。提供数据获取接口供ViewModel调用，经数据转换和操作并最终映射绑定到View层某个UI元素的属性上View 用来创建显示的界面，不做任何业务逻辑，不处理操作数据。ViewModel 将View和Model联系起来，处理视图逻辑，操作数据，不做任何UI相关的事情。绑定数据到到相应的控件上，数据变化时自动更新UI。"]
         
@@ -35,6 +35,8 @@ class ViewController : UIViewController,UITableViewDelegate,UITableViewDataSourc
         
         urlSource += ["http://upload-images.jianshu.io/upload_images/3893609-7cda6989079bafac.jpg?imageMogr2/auto-orient/"]
         urlSource += ["https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1513682568516&di=d5363c48bc7c2e14cbf842e9b3a203f2&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171215%2F7771f35b5bae4ea2b207e21d5bc9710d.jpeg"]
+        
+        
         
         
         //创建UI
@@ -60,10 +62,6 @@ class ViewController : UIViewController,UITableViewDelegate,UITableViewDataSourc
         
     }
     
-    @objc func reloadTable(){
-        tableView.reloadRows(at: [IndexPath.init(row: 0, section: 0)], with: .automatic)
-        
-    }
     
     //代理方法
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,8 +91,10 @@ class ViewController : UIViewController,UITableViewDelegate,UITableViewDataSourc
 extension ViewController : ReloadDelegate {
     
     func reload(indexP: IndexPath) {
-        tableView.reloadRows(at: [indexP], with: .fade)
+        print(indexP)
+        tableView.reloadRows(at: [indexP], with: .automatic)
+        //        tableView.reloadData()
     }
     
-    
 }
+

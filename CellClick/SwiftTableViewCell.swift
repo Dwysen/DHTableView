@@ -15,9 +15,7 @@ class SwiftTableViewCell: UITableViewCell {
     private var urlString:String?{
         
         didSet{
-            
             loadImg(urlString: urlString!)
-            
         }
         
     }
@@ -36,7 +34,7 @@ class SwiftTableViewCell: UITableViewCell {
         self.addTap()
         
     }
-
+    
     fileprivate func InitUI(){
         
         //图片
@@ -59,28 +57,32 @@ class SwiftTableViewCell: UITableViewCell {
             make.bottom.equalTo(-10)
         })
         
-    
+        
     }
     
-     func loadImg(urlString:String)  {
+    func loadImg(urlString:String)  {
         
-        guard firstInit else {
-            return
-        }
-    
-            imagePhone.kf.setImage(with: URL.init(string: urlString)) { (img, _, _, _) in
-                
-                let realHeight = img!.size.height / (img!.size.width / Common.screenWidth)
-                self.imagePhone.snp.makeConstraints({ (make) in
-                    make.height.equalTo(realHeight).priority(750)
-                })
-                
-                self.delegate?.reload(indexP: self.indexP!)
-                
-                self.firstInit = false
-                
+        //        guard firstInit else {
+        //            return
+        //        }
+        
+        imagePhone.kf.setImage(with: URL.init(string: urlString)) { (img, _, _, _) in
+            
+            guard img != nil else {
+                return
             }
-   
+            
+            let realHeight = img!.size.height / (img!.size.width / Common.screenWidth)
+            self.imagePhone.snp.makeConstraints({ (make) in
+                make.height.equalTo(realHeight).priority(750)
+            })
+            
+            self.delegate?.reload(indexP: self.indexP!)
+            
+            //                self.firstInit = false
+            
+        }
+        
     }
     
     fileprivate func addTap(){
@@ -93,12 +95,12 @@ class SwiftTableViewCell: UITableViewCell {
     
     
     @objc fileprivate func tapCell(){
-    
+        
         print("tap Cell")
         
         expanded = !expanded
         
-        delegate?.reload(indexP: indexP!)
+        //        delegate?.reload(indexP: indexP!)
         
     }
     
