@@ -1,11 +1,16 @@
 import UIKit
 import SnapKit
+import Kingfisher
 
 class SwiftTableViewCell: UITableViewCell {
     
     private lazy var expanded:Bool = false
     
     private lazy var firstInit:Bool = true
+    
+    var delegate:ReloadDelegate?
+    
+    var indexP : IndexPath?
     
     private var urlString:String?{
         
@@ -59,22 +64,23 @@ class SwiftTableViewCell: UITableViewCell {
     
      func loadImg(urlString:String)  {
         
-        let url = URL(string: urlString)
-        let data = try? Data(contentsOf: url!)
-        //从网络获取数据流,再通过数据流初始化图片
-        if let imageData = data, let image = UIImage(data: imageData) {
-            
-            let realHeight = image.size.height / (image.size.width / UIScreen.main.bounds.width)
-            imagePhone.snp.makeConstraints({ (make) in
-                make.height.equalTo(realHeight).priority(750)
-            })
-            
-            //加载图片
-            imagePhone.image = image
-            firstInit = false
-        }else{
-            //去除imageView里的图片和宽高比约束
+        guard firstInit else {
+            return
         }
+    
+            imagePhone.kf.setImage(with: URL.init(string: urlString)) { (img, _, _, _) in
+                
+                let realHeight = img!.size.height / (img!.size.width / Common.screenWidth)
+                self.imagePhone.snp.makeConstraints({ (make) in
+                    make.height.equalTo(realHeight).priority(750)
+                })
+                
+                self.delegate?.reload(indexP: self.indexP!)
+                
+                self.firstInit = false
+                
+            }
+   
     }
     
     fileprivate func addTap(){
@@ -91,6 +97,8 @@ class SwiftTableViewCell: UITableViewCell {
         print("tap Cell")
         
         expanded = !expanded
+        
+        delegate?.reload(indexP: indexP!)
         
     }
     

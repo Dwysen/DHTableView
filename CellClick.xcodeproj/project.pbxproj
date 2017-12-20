@@ -62,7 +62,6 @@
 			children = (
 				52CD1D711FE8D8AF00CD845E /* Podfile */,
 				526810D91FE7C00000A9AB69 /* CellClick */,
-				526810D81FE7C00000A9AB69 /* Products */,
 				F9D12F146AF61B4E12F7BBFB /* Pods */,
 				8BD0724BE75D04C397E1AB01 /* Frameworks */,
 			);
@@ -74,6 +73,7 @@
 				526810D71FE7C00000A9AB69 /* CellClick.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		526810D91FE7C00000A9AB69 /* CellClick */ = {
@@ -83,6 +83,7 @@
 				526810DA1FE7C00000A9AB69 /* AppDelegate.swift */,
 				526810DC1FE7C00000A9AB69 /* ViewController.swift */,
 				526810EE1FE7C2B900A9AB69 /* SwiftTableViewCell.swift */,
+				526810D81FE7C00000A9AB69 /* Products */,
 				526810DE1FE7C00100A9AB69 /* Main.storyboard */,
 				526810E11FE7C00100A9AB69 /* Assets.xcassets */,
 				526810E31FE7C00100A9AB69 /* LaunchScreen.storyboard */,
